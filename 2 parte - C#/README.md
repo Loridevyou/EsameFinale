@@ -12,12 +12,8 @@ Gestione pacchetti NuGet -> cerca quello che devi installare
 su terminale per collegare db:
 
 ```
-Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=BikeStores;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=BikeStores;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data
 ```
-
-# Su program.cs 
-
-
 
 # Quando dice crea un servizio intende di creare controller
 
@@ -25,4 +21,8 @@ Tasto destro su controller --> aggiungi --> controller --> controller MVC con vi
 
 vedere immagine ![alt text](<funzione per vedere autovelox.png>)
 
-
+# Aggiungere queste due righe nel Program.cs: 
+```
+builder.Services.AddDbContext<AutoveloxContext>(options =>
+    options.UseSqlServer(connectionString));
+```
